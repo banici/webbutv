@@ -1,0 +1,53 @@
+﻿@model Administrator.Models.AdminActor
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "PutOrPost";
+}
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.ActorID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name)
+            <br />
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age)
+            <br />
+            @Html.EditorFor(model => model.Age)
+            @Html.ValidationMessageFor(model => model.Age)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FamousMovie)
+            <br />
+            @Html.EditorFor(model => model.FamousMovie)
+            @Html.ValidationMessageFor(model => model.FamousMovie)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Salary)
+            <br />
+            @Html.EditorFor(model => model.Salary)
+            @Html.ValidationMessageFor(model => model.Salary)
+        </div>
+
+        <div class="form-group">
+            <input type="submit" style="background-color:green;" value="@Localizer["Submit"]" class="btn button" />
+            <input type="reset" style="background-color:red;" value="@Localizer["Reset"]" class="btn button" />
+        </div>
+
+    }
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

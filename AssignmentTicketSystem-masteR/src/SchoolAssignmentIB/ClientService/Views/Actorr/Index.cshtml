@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ClientService.Models.ClientActor>
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 align="center" style="color:crimson">@Localizer["Hire"] @Localizer["Actors"] @Localizer["in"] @Localizer["your"] @Localizer["Movie"]!</h2>
+    </br>
+    </br>
+    <p>
+
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Localizer["Name"]
+
+                </th>
+                <th>
+                    @Localizer["Age"]
+
+                </th>
+                <th>
+                    @Localizer["Famous"] @Localizer["Movie"]
+
+                </th>
+                <th>
+                    @Localizer["Cost"]/@Localizer["Price"]
+
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FamousMovie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salary)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Hire", "Actorr", new { id = item.ActorID})" style="background-color:lawngreen;" class="btn btn-default">@Localizer["Hire"] </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

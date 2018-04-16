@@ -1,0 +1,37 @@
+﻿@model ClientService.Models.ClientActor
+
+@{
+    ViewData["Title"] = "Hire";
+}
+
+<h2>Hire</h2>
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.ActorID)
+
+        <div>
+            @Html.LabelFor(model => model.Name)
+            <br />
+            @Html.DisplayFor(model => model.Name)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age)
+            <br />
+            @Html.DisplayFor(model => model.Age)
+        </div>
+
+        <div class="form-group">
+            <b>Cost/Price</b>
+            <br />
+            @Html.DisplayFor(model => model.Salary)
+        </div>
+
+        <div class="form-group">
+            <input type="submit" style="background-color:green;" value="Buy" class="btn button" />
+        </div>
+
+    }
+</div>

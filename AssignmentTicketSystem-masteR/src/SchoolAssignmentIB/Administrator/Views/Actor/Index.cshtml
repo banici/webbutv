@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Administrator.Models.AdminActor>
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+</br>
+
+<p>
+    <a href="@Url.Action("PutOrPost", "Actor")" style="background-color:palegreen" class="btn btn-default">@Localizer["Create"] @Localizer["New"]</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Age)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FamousMovie)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Salary)
+                </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FamousMovie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                <a href="@Url.Action("PutOrPost", "Actor", new { id = item.ActorID})" style="background-color:green;" class="btn btn-default"> @Localizer["Edit"] </a>
+                <a href="@Url.Action("Delete", "Actor", new { id = item.ActorID})" style="background-color:red;" class="btn btn-default">@Localizer["Delete"] </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
